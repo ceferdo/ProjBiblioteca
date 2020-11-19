@@ -5,7 +5,7 @@ using ProjBiblioteca.Application.ViewModels;
 using ProjBiblioteca.Domain.Entities;
 using ProjBiblioteca.Domain.Interfaces;
 
-namespace ProjBiblio.Application.Services
+namespace ProjBiblioteca.Application.Services
 {
     public class AutorService : IAutorService
     {
