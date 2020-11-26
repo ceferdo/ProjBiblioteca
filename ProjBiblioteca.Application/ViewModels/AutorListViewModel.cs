@@ -5,6 +5,6 @@ namespace ProjBiblioteca.Application.ViewModels
 {
     public class AutorListViewModel
     {
-        public IEnumerable<Autor> Autores { get; set; }
+        public IEnumerable<AutorViewModel> Autores { get; set; }
     }
 }

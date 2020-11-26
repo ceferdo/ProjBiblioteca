@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using AutoMapper;
 using ProjBiblioteca.Application.InputModels;
 using ProjBiblioteca.Application.Interfaces;
@@ -20,9 +21,10 @@ namespace ProjBiblioteca.Application.Services
 
         public AutorListViewModel Get()
         {
+            var autores = this._uow.AutorRepository.Get();
             return new AutorListViewModel()
             {
-                Autores = this._uow.AutorRepository.Get()
+                Autores = _mapper.Map<IEnumerable<AutorViewModel>>(autores)
             };
         }
 

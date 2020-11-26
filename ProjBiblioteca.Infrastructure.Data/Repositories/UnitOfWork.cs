@@ -6,12 +6,19 @@ namespace ProjBiblioteca.Infrastructure.Data.Repositories
     public class UnitOfWork : IUnitOfWork
     {
         private AutorRepository _autorRepo;
+        private LivroRepository _livroRepo;
         private BibliotecaDBContext _context;
         public IAutorRepository AutorRepository
         {
             get{
                 return _autorRepo = _autorRepo ?? 
                     new AutorRepository(_context);
+            }
+        }
+         public ILivroRepository LivroRepository
+        {
+            get { 
+                return _livroRepo = _livroRepo ?? new LivroRepository(_context);
             }
         }
         

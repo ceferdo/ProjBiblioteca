@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -12,8 +13,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using ProjBiblioteca.Application.InputModels;
 using ProjBiblioteca.Infrastructure.Data.Context;
 using ProjBiblioteca.Infrastructure.IoC;
+using ProjBiblioteca.WebApi.Filters;
 
 namespace ProjBiblioteca.WebApi
 {
@@ -30,6 +33,11 @@ namespace ProjBiblioteca.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddMvc(opt =>
+            {
+                opt.Filters.Add(typeof(ValidatorActionFilter));
+            }).AddFluentValidation(fvc => fvc.RegisterValidatorsFromAssemblyContaining<LivroInputModelValidator>());
 
             //Add using Microsoft.EntityFrameworkCore; para aparecer a opção Use
             string conn = Configuration.GetConnectionString("DefaultConnection");

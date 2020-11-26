@@ -11,6 +11,11 @@ namespace ProjBiblioteca.Application.InputModels.Mapping
                 .ForMember(dest => dest.Id, 
                            opt => opt.MapFrom(src => src.AutorID))
                 .ReverseMap();
+
+            CreateMap<Livro, LivroInputModel>()
+                .ForMember(dest => dest.Id, 
+                           opt => opt.MapFrom(src => src.LivroID))
+                .ReverseMap();
         }
     }
 }
